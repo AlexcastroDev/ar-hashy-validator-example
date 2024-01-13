@@ -8,13 +8,13 @@ You can open this project in devcontainer :)
 
 ### Install the gem
 
-´´´ruby
+```ruby
 gem 'hashy_validator'
-´´´
+```
 
 Create your model and controller, and use validates like:
 
-´´´ruby
+```ruby
 class Product < ActiveRecord::Base
     validates :name, presence: true
     validates :discount_by_quantity, hashy_array: {
@@ -24,12 +24,11 @@ class Product < ActiveRecord::Base
         active: HashValidator.multiple('required', 'boolean'),
     }
 end
-´´´
+```
 
 If you want test in your seed:
 
-´´´ruby
-
+```ruby
 Product.create!(name: 'IPhone', discount_by_quantity: JSON.generate(
     [
         {
@@ -40,13 +39,13 @@ Product.create!(name: 'IPhone', discount_by_quantity: JSON.generate(
         }
     ]
 ))
-´´´
+```
 
 if you duplicate the uuid, you will have an error like that:
 
-´´´bash
+```bash
 /home/vscode/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/activerecord-7.1.2/lib/active_record/validations.rb:84:in `raise_validation_error': Validation failed: Discount by quantity 'uuid' not unique (ActiveRecord::RecordInvalid)
-´´´
+```
 
 
 More documentation in: https://github.com/flecto-io/hashy-validator
